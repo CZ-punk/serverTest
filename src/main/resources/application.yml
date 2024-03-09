@@ -1,10 +1,14 @@
 spring:
-  datasource:
+#  datasource:
 #    url: jdbc:h2:tcp://localhost/~/konkuk;
-    url: jdbc:h2:mem:konkuk;DB_CLOSE_DELAY=-1;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:konkuk;DB_CLOSE_DELAY=-1;
+#    url:
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+  profiles:
+    active: prod
 
   jpa:
     hibernate:
@@ -17,3 +21,6 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+server:
+  address: 0.0.0.0

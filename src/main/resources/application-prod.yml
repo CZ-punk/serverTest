@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://172.31.47.179:3306/konkuk
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234

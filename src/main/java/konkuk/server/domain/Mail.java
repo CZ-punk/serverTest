@@ -21,7 +21,9 @@ public class Mail {
     @Column(name = "TITLE", length = 30)
     private String title;
     @Column(name = "CONTENTS", length = 3000)
-    private String contents;    // 미디어 파일 추가 예정
+    private String contents;
+    @Column(name = "MEDIA_FILE_URL")
+    private String mediaFileUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EMAIL_ID")
@@ -102,5 +104,13 @@ public class Mail {
 
     public void addEmail(Email email) {
         this.email = email;
+    }
+
+    public String getMediaFileUrl() {
+        return mediaFileUrl;
+    }
+
+    public void setMediaFileUrl(String mediaFileUrl) {
+        this.mediaFileUrl = mediaFileUrl;
     }
 }

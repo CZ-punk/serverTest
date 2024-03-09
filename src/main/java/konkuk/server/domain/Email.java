@@ -17,7 +17,7 @@ public class Email {
     @Column(name = "EMAIL_NAME", length = 20)
     private String name;
 
-    @Column(name = "Email_Address")
+    @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
 
     @ManyToOne(fetch = FetchType.LAZY)
