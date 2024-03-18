@@ -23,6 +23,16 @@ public class Member {
     @JsonManagedReference
     private List<Email> emailList = new ArrayList<>();
 
+    @Column(name = "FIRST_EMAIL")
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
+
+    public Provider getProvider() {
+        return provider;
+    }
+
     public Member() {
     }
 
@@ -30,6 +40,15 @@ public class Member {
         this.name = name;
         this.loginId = loginId;
         this.loginPw = loginPw;
+        this.email = loginId + "@gmail.com";
+    }
+
+    public Member(String name, String loginId, String loginPw, Provider provider) {
+        this.name = name;
+        this.loginId = loginId;
+        this.loginPw = loginPw;
+        this.provider = provider;
+        this.email = loginId + "@gmail.com";
     }
 
     public void addEmail(Email email) {
@@ -56,7 +75,7 @@ public class Member {
         this.name = name;
     }
 
-    public String getMemberId() {
+    public String getLoginId() {
         return loginId;
     }
 
@@ -64,7 +83,7 @@ public class Member {
         this.loginId = memberId;
     }
 
-    public String getMemberPw() {
+    public String getLoginPw() {
         return loginPw;
     }
 
@@ -79,4 +98,9 @@ public class Member {
     private void setEmailList(List<Email> emailList) {
         this.emailList = emailList;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
 }

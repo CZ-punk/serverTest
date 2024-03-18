@@ -1,0 +1,36 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 34134485348-ng2afc702a584hgkg7dvav88g8im720q.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+            scope:
+              - profile
+              - email
+              - https://www.googleapis.com/auth/gmail.readonly
+              - https://www.googleapis.com/auth/gmail.modify
+        #provider:
+          #google:
+           #authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+
+
+          naver:
+            clientId: 7rzH6MAgnO3j2HNo7EZW
+            clientSecret: aZXBYNVoKq
+            clientName: Naver
+            authorizationGrantType: authorization_code
+            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - name
+              - email
+              - profile_image
+            clientAuthenticationMethod: post
+        provider:
+          naver:
+            authorizationUri: https://nid.naver.com/oauth2.0/authorize
+            tokenUri: https://nid.naver.com/oauth2.0/token
+            userInfoUri: https://openapi.naver.com/v1/nid/me
+            userNameAttribute: response

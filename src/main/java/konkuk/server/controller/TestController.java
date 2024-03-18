@@ -7,6 +7,7 @@ import konkuk.server.service.EmailService;
 import konkuk.server.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,5 +48,15 @@ public class TestController {
 
     // 조회는 {고유id}/query parameter 로 조회하자.
 
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<String> signUp() {
+        return ResponseEntity.ok("회원가입 완료");
+    }
+
+    @GetMapping("/sign-in")
+    public ResponseEntity<String> signIn() {
+        return ResponseEntity.ok("로그인 완료");
+    }
 
 }

@@ -2,14 +2,13 @@ package konkuk.server.service;
 
 import konkuk.server.domain.Email;
 import konkuk.server.domain.Member;
-import konkuk.server.repository.EmailRepository;
 import konkuk.server.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,16 +23,16 @@ public class MemberService {
         추후 추가 예정
      */
 
-    public Long join(Member member) {
+    public Member join(Member member) {
         validateDuplicateLoginId(member);
         memberRepository.save(member);
-        return member.getId();
+        return member;
     }
 
     // 이미 존재하는 Login ID 가 있을 경우 회원가입 못하게 Exception
     private void validateDuplicateLoginId(Member member) {
-        List<Member> findMember = memberRepository.findLoginId(member.getId());
-        if (!findMember.isEmpty()) {
+        Optional<Member> findMember = memberRepository.findByLoginId(String.valueOf(member.getLoginId()));
+        if (findMember.isPresent()) {
             throw new IllegalStateException("이미 존재하는 회원ID 입니다.");
         }
     }
